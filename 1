@@ -1,0 +1,168 @@
+1.	Write a program that generates a stream of random numbers and writes them to a file.
+Program:
+n=int(input())
+with open("ex.text","a")as file:
+    for i in range (1,n):
+        f=file.write(f"the num is {i}\n")
+        print(f)
+Output:
+the num is 1
+the num is 1
+the num is 2
+the num is 3
+the num is 4
+the num is 5
+the num is 6
+the num is 7
+the num is 8
+the num is 9
+2.Write a program to read the random numbers from the file created above and calculate their average.
+Program:
+n=int(input())
+sum=0
+with open("ex.text","r")as file:
+    for i in range (1,n):
+        sum=sum+i
+    print(f" the sum is {sum}\n")
+    avg=sum/n
+    print(f" the average is {avg}\n")
+    f=file.read()
+    print(f)
+output:
+the sum is 45
+ the average is 4.5
+
+2.	Write a program that reads from a file and handles the case where the file does not exist.
+Program:
+def read_file(file_name):
+    try:
+        with open(file_name, 'r') as file:
+            contents = file.read()
+            print(contents)
+    except FileNotFoundError:
+        print("File not found.")
+file_name = input("Enter the file name: \n")
+read_file(file_name)
+output:
+Enter the file name:
+the num is 1
+the num is 2
+the num is 3
+the num is 4
+the num is 5
+the num is 6
+the num is 7
+the num is 8
+the num is 9
+4.Create a user-defined exception NegativeNumberError that is raised when a negative number is encountered in a list.
+Program:
+class NegativeNumberError(Exception):
+    pass
+
+def check_positive_numbers(numbers):
+    for num in numbers:
+        if num < 0:
+            raise NegativeNumberError("Negative number raised!")
+try:
+    numbers = [1, 2, -3, 4, 5]
+    check_positive_numbers(numbers)
+except NegativeNumberError as e:
+    print(e)
+output:
+Negative number raised!
+5.Create a NumPy array of 10 random numbers and print them.
+Program:
+import numpy as np
+random_integers = np.random.randint(0,10, size=10)
+print(random_integers)
+output:
+[8 0 1 6 6 0 4 1 9 9]
+6.Write a program to add and remove items from a NumPy array.
+Program:
+import numpy as np
+my_array = np.array([1, 2, 3])
+app = 4
+new_array = np.append(my_array, app)
+print("array after adding:",new_array)
+new_array = np.delete(my_array, 1)
+print(" array after removing:",new_array)
+output:
+array after adding: [1 2 3 4]
+Updated array after removing: [1 3]
+7.Sort the NumPy array which you created.
+Program:
+import numpy as np
+array=np.sort([9,8,7,5,6,3,2,1])
+sa=np.sort(array)
+print(sa)
+output:
+[1 2 3 5 6 7 8 9]
+8.Reshape a NumPy array into a 2x5 matrix.
+Program:
+import numpy as np
+array=np.array([3,4,5,3,8,9,8,6,7,1])
+sa=array.reshape(2,5)
+print(sa)
+output:
+[[3 4 5 3 8]
+ [9 8 6 7 1]]
+
+9.Demonstrate indexing and slicing on the reshaped matrix.
+Program:
+import numpy as np
+matrix = np.array([[1, 2, 3],
+                   [4, 5, 6],
+                   [7, 8, 9]])
+reshaped_matrix = matrix.reshape(9)
+print("Original Matrix:")
+print(matrix)
+print("\nReshaped Matrix:")
+print(reshaped_matrix)
+print("\nIndexing:")
+print("Element at index -1:", reshaped_matrix[-1])
+print("\nSlicing:")
+print("Elements from index 3 to 6:", reshaped_matrix[3:7])
+print("Last three elements:", reshaped_matrix[-3:])
+output:
+Original Matrix:
+[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+Reshaped Matrix:
+[1 2 3 4 5 6 7 8 9]
+Indexing:
+Element at index -1: 9
+Slicing:
+Elements from index 3 to 6: [4 5 6 7]
+Last three elements: [7 8 9]
+10.Write a program to append new data to an existing file and then read the updated file.
+Program:
+def append_to_file(filename, data):
+    with open(filename, 'a') as file:
+        file.write(data)
+
+def read_updated_file(filename):
+    with open(filename, 'r') as file:
+        return file.read()
+
+append_to_file('random_numbers.txt', "New data\n")
+updated_content = read_updated_file('random_numbers.txt')
+print(updated_content)
+output:
+New data
+New data
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
